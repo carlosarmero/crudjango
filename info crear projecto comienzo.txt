@@ -1,0 +1,12 @@
+1 crear carpeta
+2 crear venv: py -m venv "nombre"
+  en Vscode f1 para selccion oy version--del venv--, chck en terminal q esta activa
+3 pip insatll django
+  ver verison django django-admin --version 
+4 comenzar proyecto django-admin startproject "name"
+  django-admin startproject crud .  el punto para no crear carpeto sino crear dentro de la q ya cree
+5 correr servidor python manage.py runserver
+
+6crear app/carpeta/parte py manage.py startapp "name"
+     (cuadno visite URLS, va mostart lo que este en views, ya q en url se importan las views y en l afuncion el path de la url)
+      (token verifca que fue nuestro servidor elq origino el form)G
