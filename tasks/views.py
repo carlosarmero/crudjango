@@ -13,15 +13,23 @@ def regis(request):
     if request.method == 'GET':
         return render(request, 'regis.html', {
         'form' : UserCreationForm
-    })
+        })
     else:
-        if request.POST['password1'] ==  request.POST['password2']:
+        if request.POST['password1'] == request.POST['password2']:
             try:
-                user = User.Objects.create_user(username=request.POST['username'], 
-                                            password=request.POST['password1'])
+                user = User.objects.create_user(
+                   username=request.POST['username'],
+                   password=request.POST['password1'])
                 user.save()
                 return HttpResponse("user created")   
             except:
-                return HttpResponse("no creado")             
+                return render(request, 'regis.html', {
+                    'form' : UserCreationForm,
+                    "error": "no creado"
+                })                           
     
-        return HttpResponse("OSiris mal passw")
+        return render(request, 'regis.html', {
+        'form' : UserCreationForm,
+        'error': "Siris mal passw"
+        })
+       # HttpResponse("OSiris mal passw")

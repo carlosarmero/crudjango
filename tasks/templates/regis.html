@@ -2,10 +2,12 @@
  <h1>Sensei</h1>
  <p>Im awesome</p>
 
- <form action="/enroll/" method="post">
+ <form method="post">
     <!invoca el usercrationfrom importado de django(en views) en el html!! {estos brackets}>
     {% csrf_token %}
     {{form.as_p}} 
     <button>enroll</button>
+    <!d!>
+    {{error}}
  </form>
  
