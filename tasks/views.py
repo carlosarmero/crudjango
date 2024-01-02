@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth import login
 
 # Create your views here.
 def home(request):
@@ -21,7 +22,8 @@ def regis(request):
                    username=request.POST['username'],
                    password=request.POST['password1'])
                 user.save()
-                return HttpResponse("user created")   
+                login(request, user)
+                return redirect('tasks') #HttpResponse("user created")   
             except:
                 return render(request, 'regis.html', {
                     'form' : UserCreationForm,
@@ -33,3 +35,6 @@ def regis(request):
         'error': "Siris mal passw"
         })
        # HttpResponse("OSiris mal passw")
+
+def tarea(request):
+    return render(request, 'tasks.html')
