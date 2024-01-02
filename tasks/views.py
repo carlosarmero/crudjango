@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login
+from django.db import IntegrityError
 
 # Create your views here.
 def home(request):
@@ -24,7 +25,7 @@ def regis(request):
                 user.save()
                 login(request, user)
                 return redirect('tasks') #HttpResponse("user created")   
-            except:
+            except IntegrityError: 
                 return render(request, 'regis.html', {
                     'form' : UserCreationForm,
                     "error": "no creado"
