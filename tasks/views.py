@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.db import IntegrityError
 
 # Create your views here.
@@ -39,3 +39,7 @@ def regis(request):
 
 def tarea(request):
     return render(request, 'tasks.html')
+
+def salir(request):
+    logout(request)
+    return redirect('home')
