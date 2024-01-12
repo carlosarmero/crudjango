@@ -11,4 +11,4 @@ class Tarea(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.titulo
+        return self.titulo + 'hecho por' + self.user.username
