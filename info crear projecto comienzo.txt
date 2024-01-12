@@ -11,4 +11,5 @@
      (cuadno visite URLS, va mostart lo que este en views, ya q en url se importan las views y en l afuncion el path de la url)
       (token verifca que fue nuestro servidor elq origino el form)G
 7 hacer migraciones:  python manage.py makemigrations despues python manage.py migrate
+8 creas ADMIN: py manage.py createsuperuser
 
