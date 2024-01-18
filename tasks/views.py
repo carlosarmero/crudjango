@@ -62,7 +62,18 @@ def signin(request):
             return redirect('tasks')
     
 def crear_tarea(request):
-    return render(request, 'crear_tarea.html',{
+    if request.method == 'GET':
+        return render(request, 'crear_tarea.html',{
         'form' : TareaForm
-    })    
-    
+        })
+    else:
+        try:
+            form = TareaForm(request.POST) #le ponde los datos del form qse envia
+            new_task = form.save(commit=False) #evita que se guarde
+            new_task.user = request.user #usuario loggeado
+            new_task.save()
+            return redirect('tasks')
+        except:
+            return render (request, 'tasks.html', {
+                    'error' : "tarea no sirve"
+                })
