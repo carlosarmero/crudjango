@@ -4,11 +4,11 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+from .forms import TareaForm
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
-
 
 def regis(request):
     
@@ -61,5 +61,8 @@ def signin(request):
             login(request, user)
             return redirect('tasks')
     
-    
+def crear_tarea(request):
+    return render(request, 'crear_tarea.html',{
+        'form' : TareaForm
+    })    
     
