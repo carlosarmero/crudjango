@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>HNyear god</h1>
+<h1>Lista de tus tareas</h1>
+
+<ul>
+    {%for tarea in tareas%}
+    <li>
+    <h2>{{tarea.titulo}}</h2>
+    <p>{{tarea.descripcion}}</p>
+    </li>
+    {%endfor%}
+
+</ul>
+
 {% endblock %}

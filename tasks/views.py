@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import TareaForm
+from .models import Tarea
 
 # Create your views here.
 def home(request):
@@ -33,12 +34,13 @@ def regis(request):
     
         return render(request, 'regis.html', {
         'form' : UserCreationForm,
-        'error': "Siris mal passw"
+        'error': "Contraseñas no coinciden"
         })
        # HttpResponse("OSiris mal passw")
 
 def tarea(request):
-    return render(request, 'tasks.html')
+    tareas = Tarea.objects.filter(user= request.user)
+    return render(request, 'tasks.html', {'tareas': tareas})
 
 def salir(request):
     logout(request) #quita cookie sesion
