@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>inicio sesion</h1>
+<h1>Inicia sesión</h1>
 <form method="post">
     {% csrf_token %}
     {{ form }}
     {{error}}
-    <button>Inicie sesio dog</button>
+    <button>Iniciar sesión</button>
 </form>
 {% endblock %}
