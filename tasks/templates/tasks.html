@@ -6,8 +6,13 @@
 <ul>
     {%for tarea in tareas%}
     <li>
+        {% if tarea.important %}
     <h2>{{tarea.titulo}}</h2>
+    {% else %}
+    <h4>{{tarea.titulo}}</h4>
+    {% endif %}
     <p>{{tarea.descripcion}}</p>
+    <div>{{tarea.creado}}</div>
     </li>
     {%endfor%}
 

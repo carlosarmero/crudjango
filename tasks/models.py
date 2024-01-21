@@ -6,7 +6,7 @@ class Tarea(models.Model):
     titulo = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True)
     creado = models.DateTimeField(auto_now_add=True)
-    fechacompletado = models.DateField(null=True)
+    fechacompletado = models.DateField(null=True) #blank=True
     important = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     
