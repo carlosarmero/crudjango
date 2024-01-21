@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect 
+from django.shortcuts import render, redirect, get_object_or_404 
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
@@ -79,3 +79,8 @@ def crear_tarea(request):
             return render (request, 'tasks.html', {
                     'error' : "tarea no sirve"
                 })
+            
+            
+def detalle_tarea(request, tarea_id):
+    tarea = get_object_or_404(Tarea, pk=tarea_id)
+    return render(request, 'detarea.html', {'tarea': tarea}) 
