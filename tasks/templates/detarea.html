@@ -4,4 +4,10 @@
 
 {{tarea.titulo}}
 
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Actualizar</button>
+</form>
+
 {% endblock %}

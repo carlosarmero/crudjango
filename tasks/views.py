@@ -82,5 +82,14 @@ def crear_tarea(request):
             
             
 def detalle_tarea(request, tarea_id):
-    tarea = get_object_or_404(Tarea, pk=tarea_id)
-    return render(request, 'detarea.html', {'tarea': tarea}) 
+    if request.method == 'GET':
+        tarea = get_object_or_404(Tarea, pk=tarea_id)
+        form = TareaForm
+        return render(request, 'detarea.html', {'tarea': tarea, 'form': form})
+    else: 
+        tarea = get_object_or_404(Tarea, pk=tarea_id) 
+        form = TareaForm(request.POST, instance=tarea)
+        form.save()
+        return redirect('tasks')
+        
+    
