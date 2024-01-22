@@ -83,13 +83,28 @@ def crear_tarea(request):
             
 def detalle_tarea(request, tarea_id):
     if request.method == 'GET':
-        tarea = get_object_or_404(Tarea, pk=tarea_id)
+        tarea = get_object_or_404(Tarea, pk=tarea_id, user=request.user)
         form = TareaForm
         return render(request, 'detarea.html', {'tarea': tarea, 'form': form})
     else: 
-        tarea = get_object_or_404(Tarea, pk=tarea_id) 
-        form = TareaForm(request.POST, instance=tarea)
-        form.save()
+        try:
+            tarea = get_object_or_404(Tarea, pk=tarea_id, user=request.user) 
+            form = TareaForm(request.POST, instance=tarea)
+            form.save()
+            return redirect('tasks')
+        except: ValueError
+        return render(request, 'detarea.html', {'tarea': tarea, 'form': form, 
+                                                'error': "No es posible actualizar"})
+        
+        
+def borrar(request, tarea_id):
+    tarea = get_object_or_404(Tarea, pk=tarea_id, user=request.user) 
+    if request.method == 'POST':
+        tarea.delete()
         return redirect('tasks')
+        
+        
+        
+            
         
     

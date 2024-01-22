@@ -3,11 +3,16 @@
 {% block content %}
 
 {{tarea.titulo}}
-
+{{error}}
 <form method="post">
     {% csrf_token %}
     {{form.as_p}}
     <button>Actualizar</button>
+</form>
+
+<form action="{% url 'borrar' tarea.id %}" method="post">
+    {% csrf_token %}
+    <button>borrar</button>
 </form>
 
 {% endblock %}
