@@ -6,7 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import TareaForm
 from .models import Tarea
-
+from django.utils import timezone
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -101,6 +101,13 @@ def borrar(request, tarea_id):
     tarea = get_object_or_404(Tarea, pk=tarea_id, user=request.user) 
     if request.method == 'POST':
         tarea.delete()
+        return redirect('tasks')
+    
+def completa(request, tarea_id):
+    tarea = get_object_or_404(Tarea, pk=tarea_id, user=request.user) 
+    if request.method == 'POST':
+        tarea.fechacompletado = timezone.now()
+        tarea.save()
         return redirect('tasks')
         
         

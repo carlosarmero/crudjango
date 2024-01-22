@@ -4,5 +4,5 @@ from .models import Tarea
 class TareaForm(ModelForm):
     class Meta: 
         model = Tarea
-        fields = ['titulo', 'descripcion', 'important']
+        fields = ['titulo', 'descripcion', 'important',]
         
