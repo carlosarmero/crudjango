@@ -7,6 +7,7 @@ from django.db import IntegrityError
 from .forms import TareaForm
 from .models import Tarea
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -37,15 +38,15 @@ def regis(request):
         'error': "Contraseñas no coinciden"
         })
        # HttpResponse("OSiris mal passw")
-
+@login_required #proteje urls
 def tarea(request):
     tareas = Tarea.objects.filter(user= request.user, fechacompletado__isnull=True) #fechacompletado__isnull=True q la liste si no compl
     return render(request, 'tasks.html', {'tareas': tareas})
-
+@login_required
 def tacompl(request):
     tareas = Tarea.objects.filter(user= request.user, fechacompletado__isnull=False).order_by('fechacompletado') #-??? se pone?
     return render(request, 'tacompl.html', {'tareas': tareas})
-
+@login_required
 def salir(request):
     logout(request) #quita cookie sesion
     return redirect('home')
@@ -66,7 +67,7 @@ def signin(request):
         else:
             login(request, user)
             return redirect('tasks')
-    
+@login_required    
 def crear_tarea(request):
     if request.method == 'GET':
         return render(request, 'crear_tarea.html',{
@@ -84,7 +85,7 @@ def crear_tarea(request):
                     'error' : "tarea no sirve"
                 })
             
-            
+@login_required            
 def detalle_tarea(request, tarea_id):
     if request.method == 'GET':
         tarea = get_object_or_404(Tarea, pk=tarea_id, user=request.user)
@@ -100,13 +101,13 @@ def detalle_tarea(request, tarea_id):
         return render(request, 'detarea.html', {'tarea': tarea, 'form': form, 
                                                 'error': "No es posible actualizar"})
         
-        
+@login_required        
 def borrar(request, tarea_id):
     tarea = get_object_or_404(Tarea, pk=tarea_id, user=request.user) 
     if request.method == 'POST':
         tarea.delete()
         return redirect('tasks')
-    
+@login_required    
 def completa(request, tarea_id):
     tarea = get_object_or_404(Tarea, pk=tarea_id, user=request.user) 
     if request.method == 'POST':

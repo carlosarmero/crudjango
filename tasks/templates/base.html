@@ -7,37 +7,57 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg bg-info">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Bienvenido</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">HOME</a>        
+                 </li>          
+                        {% if user.is_authenticated %}
+                 <li class="nav-item">
+                     <a href="logout/" class="nav-link">Cerrar sesión</a>        
+                 </li>
+                 <li class="nav-item">
+                     <a href="/tasks" class="nav-link">Tareas</a>        
+                 </li>
+                 {% else %}
+                 <li class="nav-item">
+                     <a href="/enroll" class="nav-link">Inscribirse</a>        
+                 </li>
+                 <li class="nav-item">
+                     <a href="{% url 'signin' %}" class="nav-link">Iniciar sesion</a>        
+                 </li>
+              
+                 {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+   
+
+
     <nav>
         <ul>
-            <li>
-               <a href="/" >HOME</a>        
-            </li>          
-                   {% if user.is_authenticated %}
-            <li>
-                <a href="logout/" >Cerrar sesión</a>        
-            </li>
-            <li>
-                <a href="/tasks" >Tareas</a>        
-            </li>
-            {% else %}
-            <li>
-                <a href="/enroll" >Inscribirse</a>        
-            </li>
-            <li>
-                <a href="{% url 'signin' %}" >Iniciar sesion</a>        
-            </li>
-         
-            {% endif %}
+            
            
          </ul>    
     </nav>
 
     
 
+    <main class="container py-7">
+        <section class="card card-body">
 {% block content %}
 {% endblock %}
-
+        </section>
+    </main> 
 </body>
 </html>

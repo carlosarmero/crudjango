@@ -1,5 +1,14 @@
 {% extends  'base.html' %}
 
 {% block content %}
-<h1>El centro de operacion de la página para el usuario</h1>
+<h1 class="display-2 text-center">El centro de operacion de la página para el usuario</h1>
+<div class="text-center">
+    <a href="signin" class="btn btn-secondary">
+            Iniciar sesión
+    </a>
+
+    <a href="{% url 'enroll' %}" class="btn btn-light">
+            Registrarse
+    </a>
+</div>
 {% endblock %}

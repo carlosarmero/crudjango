@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 <!DOCTYPE html>
- <h1>Registrate</h1>
- <p>Introduce tus datos</p>
 
- <form method="post">
+
+ <form method="post" class="col-md-4 offset-md-4">
     <!--invoca el usercrationfrom importado de django(en views) en el html!! {estos brackets}-->
+    <h1 class="text-center">Registrate</h1>
+    <p class="text-center">Introduce tus datos</p>
     {% csrf_token %}
     {{form.as_p}} 
-    <button>Enrolarse</button>
+    <button class="text-center">Enrolarse</button>
     {{error}}
  </form>
  {% endblock %}   
