@@ -21,9 +21,10 @@ def regis(request):
     else: #si el reques metodo es post
         if request.POST['password1'] == request.POST['password2']:
             try:
+                #form = UserCreationForm(username.CharField(label='nombre de usuario'))
                 user = User.objects.create_user(
-                   username=request.POST['username'],
-                   password=request.POST['password1'])
+                username=request.POST['username'],
+                password=request.POST['password1']) 
                 user.save() #lo guarda en bd
                 login(request, user) #crea el cookie de sesion
                 return redirect('tasks') #HttpResponse("user created")   
