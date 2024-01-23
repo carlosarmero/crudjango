@@ -15,9 +15,12 @@
     <button>borrar</button>
 </form>
 
+{% if tarea.fechacompletado %}
+<h6>Esta atrea ya se completo</h6>
+{% else %}
 <form action="{% url 'completa' tarea.id %}" method="post">
     {% csrf_token %}
     <button>completar</button>
 </form>
-
+{% endif %}
 {% endblock %}

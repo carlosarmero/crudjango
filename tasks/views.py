@@ -39,8 +39,12 @@ def regis(request):
        # HttpResponse("OSiris mal passw")
 
 def tarea(request):
-    tareas = Tarea.objects.filter(user= request.user) #fechacompletado__isnull=True q la liste si no compl
+    tareas = Tarea.objects.filter(user= request.user, fechacompletado__isnull=True) #fechacompletado__isnull=True q la liste si no compl
     return render(request, 'tasks.html', {'tareas': tareas})
+
+def tacompl(request):
+    tareas = Tarea.objects.filter(user= request.user, fechacompletado__isnull=False).order_by('fechacompletado') #-??? se pone?
+    return render(request, 'tacompl.html', {'tareas': tareas})
 
 def salir(request):
     logout(request) #quita cookie sesion

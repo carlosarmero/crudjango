@@ -24,6 +24,7 @@ urlpatterns = [
     path('enroll/', views.regis),
     path('signin/', views.signin, name='signin'),
     path('tasks/', views.tarea, name='tasks'),
+    path('tacompl/', views.tacompl, name='tacompl'),
     path('tasks/<int:tarea_id>/', views.detalle_tarea, name='detarea'),
     #path('tasks/<int:tarea_id>/logout/', views.salir),  
     path('tasks/logout/', views.salir),   
