@@ -13,3 +13,13 @@
 7 hacer migraciones:  python manage.py makemigrations despues python manage.py migrate
 8 creas ADMIN: py manage.py createsuperuser
 
+9 deploy
+https://docs.render.com/deploy-django
+9 install estos 2 para db dj-database-url psycopg2-binary
+
+10 whitenoise[brotli] para staticos inst 
+
+11 instll gunicorn run app 
+
+12 pip freeze requirements.txt crea modulos del projecto para funcionar
+
