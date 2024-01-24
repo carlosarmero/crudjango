@@ -1,29 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Lista de tus tareas sin completar</h1>
+<h1 class="text-center py-3">Lista de tus tareas sin completar</h1>
 
-<ul>
+<ul class="list-group">
     {%for tarea in tareas%}
-    <li>
-        <a href="{% url 'detarea' tarea.id %}" >
-            {% if tarea.important %}
-            <h2>{{tarea.titulo}}</h2>
-            {% else %}
-            <h4>{{tarea.titulo}}</h4>
-            {% endif %}
-            <p>{{tarea.descripcion}}</p>
-            <p>{{tarea.creado}}</p>
+    <li class="list-group-item">
+        {% if tarea.important %}
+        <a href="{% url 'detarea' tarea.id %}">{{tarea.titulo}}</a>
+        {% else %}
+        <h4><a href="{% url 'detarea' tarea.id %}">{{tarea.titulo}}</a></h4>
+        {% endif %}
+        <p>{{tarea.descripcion}}</p>
+        <p>{{tarea.creado}}</p>
             <!--<p>{{tarea.fechacompletado}}</p>     -->
-        </a>
     </li>
     {%endfor%}
-
 </ul>
-<form action="{% url 'crear' %}">
+<form class="text-center py-3" action="{% url 'crear' %}">
 <button>Crear nueva tarea</button>
 </form>
-<form action="{% url 'tacompl' %}">
+<form class="text-center py-3" action="{% url 'tacompl' %}">
     <button>Tareas completas</button>
     </form>
 {% endblock %}

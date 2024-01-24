@@ -2,8 +2,8 @@
 
 {% block content %}
 
-<h1>Form crea tarea</h1>
-<form method="post">
+<h1 class="py-2">Form crea tarea</h1>
+<form class="text-center py-3" method="post">
 {% csrf_token %}
 {{ form }}
 <button>Enviar tarea a BD</button>

@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Lista de tus tareas completadas</h1>
+<h1 class="text-center py-3">Lista de tus tareas completadas</h1>
 
-<ul>
+<ul class="list-group">
     {%for tarea in tareas%}
-    <li>
-        <a href="{% url 'detarea' tarea.id %}" >
+    <li class="list-group-item">
+        
             {% if tarea.important %}
-            <h2>{{tarea.titulo}}</h2>
+            <h2><a href="{% url 'detarea' tarea.id %}">{{tarea.titulo}}</a></h2>
             {% else %}
-            <h4>{{tarea.titulo}}</h4>
+            <h4><a href="{% url 'detarea' tarea.id %}">{{tarea.titulo}}</a></h4>
             {% endif %}
             <p>{{tarea.descripcion}}</p>
             <p>{{tarea.creado}}</p>
@@ -21,7 +21,7 @@
     {%endfor%}
 
 </ul>
-<form action="{% url 'crear' %}">
+<form  class="text-center py-3" action="{% url 'crear' %}">
 <button>Crear nueva tarea</button>
 </form>
 {% endblock %}

@@ -4,23 +4,23 @@
 
 {{tarea.titulo}}
 {{error}}
-<form method="post">
+<form class="text-center py-3" method="post">
     {% csrf_token %}
     {{form.as_p}}
-    <button>Actualizar</button>
+    <button >Actualizar</button>
 </form>
 
-<form action="{% url 'borrar' tarea.id %}" method="post">
+<form class="text-center py-3" action="{% url 'borrar' tarea.id %}" method="post">
     {% csrf_token %}
     <button>borrar</button>
 </form>
 
 {% if tarea.fechacompletado %}
-<h6>Esta atrea ya se completo</h6>
+<h6>Esta tarea ya se completo</h6>
 {% else %}
-<form action="{% url 'completa' tarea.id %}" method="post">
+<form  action="{% url 'completa' tarea.id %}" method="post">
     {% csrf_token %}
-    <button>completar</button>
+    <button class="text-center py-3" >completar</button>
 </form>
 {% endif %}
 {% endblock %}
