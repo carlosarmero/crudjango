@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<h5 class="text-center">A continuación puedes editar la tarea</h5>
 {{tarea.titulo}}
 {{error}}
 <form class="text-center py-3" method="post">
     {% csrf_token %}
     {{form.as_p}}
-    <button >Actualizar</button>
+    <button class="btn btn-warning">Actualizar</button>
 </form>
 
 <form class="text-center py-3" action="{% url 'borrar' tarea.id %}" method="post">
     {% csrf_token %}
-    <button>borrar</button>
+    <button class="btn btn-danger">Borrar</button>
 </form>
 
 {% if tarea.fechacompletado %}
 <h6>Esta tarea ya se completo</h6>
 {% else %}
-<form  action="{% url 'completa' tarea.id %}" method="post">
+<form  class="text-center py-3" action="{% url 'completa' tarea.id %}" method="post">
     {% csrf_token %}
-    <button class="text-center py-3" >completar</button>
+    <button class="btn btn-success">Completar</button>
 </form>
 {% endif %}
 {% endblock %}

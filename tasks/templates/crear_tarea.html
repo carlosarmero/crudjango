@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h1 class="py-2">Form crea tarea</h1>
+<h1 class="py-2 text-center">Introduce la información de tu tarea</h1>
 <form class="text-center py-3" method="post">
 {% csrf_token %}
 {{ form }}
-<button>Enviar tarea a BD</button>
+<button class="m-3 btn btn-secondary">Crear tarea</button>
 </form>
 {{error}}
 {% endblock %}

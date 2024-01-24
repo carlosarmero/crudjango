@@ -26,10 +26,12 @@ urlpatterns = [
     path('tasks/', views.tarea, name='tasks'),
     path('tacompl/', views.tacompl, name='tacompl'),
     path('tasks/<int:tarea_id>/', views.detalle_tarea, name='detarea'),
-    #path('tasks/<int:tarea_id>/logout/', views.salir),  
-    path('tasks/logout/', views.salir),   
     path('tasks/crear/', views.crear_tarea, name='crear'),
     path('tasks/<int:tarea_id>/borrar', views.borrar, name='borrar'),
     path('tasks/<int:tarea_id>/completa', views.completa, name='completa'),
-    path('logout/', views.salir, name='log')
+    path('logout/', views.salir, name='log'),
+    path('tasks/logout/', views.salir), 
+    path('tacompl/logout/', views.salir),
+    path('tasks/<int:tarea_id>/logout/', views.salir2),
+    path('tasks/crear/logout/', views.salir)     
 ]

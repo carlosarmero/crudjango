@@ -1,14 +1,25 @@
 {% extends  'base.html' %}
 
 {% block content %}
-<h1 class="display-2 text-center">El centro de operacion de la página para el usuario</h1>
-<div class="text-center">
+<h1 class="display-5 text-center">Administrador de tareas con Django</h1>
+<div class="text-center py-4">
+        {% if user.is_authenticated %}
+
+        <p>Esta aplicacion te permite registarte con un nombre de usuario cualquiera, una contraseña 
+                y crear tareas, que puedes marcar como importantes o no, tambien las puedes editar, 
+                borrar y actualizar
+        </p>
+        <img  width="400" height="300" alt="Tareas imagen" src="https://media.istockphoto.com/id/1336546162/es/vector/concepto-de-planificaci%C3%B3n-y-gesti%C3%B3n-del-tiempo.jpg?s=1024x1024&w=is&k=20&c=4WMNwtCSuyaYIf8GEWm9CQH7qvh1Wn49_CsWq40EDAA=">
+         {% else %}
+         <div><img class="mb-3" width="400" height="300" alt="Tareas imagen" src="https://media.istockphoto.com/id/1336355737/es/vector/una-vista-superior-de-una-tarea-de-clase-de-geometr%C3%ADa-un-conjunto-de-papeler%C3%ADa.jpg?s=612x612&w=0&k=20&c=QiX4imfwKDNeoe14rKE6JmzMYH8TdTz2yTVG2_h86IE=   ">
+         </div>
     <a href="signin" class="btn btn-secondary">
             Iniciar sesión
     </a>
 
     <a href="{% url 'enroll' %}" class="btn btn-light">
             Registrarse
+            {% endif %}
     </a>
 </div>
 {% endblock %}

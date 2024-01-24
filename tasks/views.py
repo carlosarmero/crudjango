@@ -31,7 +31,7 @@ def regis(request):
             except IntegrityError: 
                 return render(request, 'regis.html', {
                     'form' : UserCreationForm,
-                    "error": "no creado"
+                    "error": "Usuario no creado"
                 })                           
     
         return render(request, 'regis.html', {
@@ -51,6 +51,10 @@ def tacompl(request):
 def salir(request):
     logout(request) #quita cookie sesion
     return redirect('home')
+@login_required
+def salir2(request, tarea_id):
+    logout(request) #quita cookie sesion
+    return redirect('home')
 
 def signin(request):
     if request.method == 'GET':
@@ -63,7 +67,7 @@ def signin(request):
         if user is None:
             return render(request, 'signin.html', {
         'form' : AuthenticationForm,
-        'error': 'no sos nadie en bd'
+        'error': 'Nombre de usuario y contraseña no coinciden'
         })
         else:
             login(request, user)

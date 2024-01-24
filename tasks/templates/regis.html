@@ -3,13 +3,13 @@
 <!DOCTYPE html>
 
 
- <form method="post" class="col-md-4 offset-md-4">
+ <form method="post" class="text-center col-md-4 offset-md-4">
     <!--invoca el usercrationfrom importado de django(en views) en el html!! {estos brackets}-->
-    <h1 class="text-center">Registrate</h1>
+    <h1 class="text-center">Regístrate</h1>
     <p class="text-center">Introduce tus datos</p>
     {% csrf_token %}
     {{form.as_p}} 
-    <button class="text-center">Enrolarse</button>
+    <button class="btn btn-primary">Enrolarse</button>
     {{error}}
  </form>
  {% endblock %}   
